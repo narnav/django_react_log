@@ -1,4 +1,5 @@
-import Login from './Login';
+import Cats from './Cats';
+import Login from './Login';    
 import { useState } from 'react';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
             {logged ? `Welcome ${userEmail}` :"not logged"}
             <Login  logged={setlogged} setEmail={setEmail}/>
+            <Cats></Cats>
         </div>
     );
 }

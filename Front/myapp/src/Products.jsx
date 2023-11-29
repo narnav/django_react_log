@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import Pay from "./Pay";
+// import Pay from "./Pay";
 
 const Products = () => {
     const { categoryId } = useParams();
@@ -19,6 +19,7 @@ const Products = () => {
         let temp=0
         cart.forEach(prd => (temp+= prd.amount * prd.price))
         settotal(temp)
+        console.log(JSON.stringify( cart));
     }, [cart,refreshFlag])
 
 
@@ -34,11 +35,26 @@ const Products = () => {
             }
             setrefresh(!refreshFlag)
         } else {
-            let orderItem = { id: prod.id, name: prod.name, amount: 1, price: prod.price }
+            let orderItem = { id: prod.id, product_name: prod.name, amount: 1, price: prod.price }
             setcart([...cart, orderItem])
         }
     }
-
+    const sendCartToDjango = () => {
+        axios.post('http://127.0.0.1:8000/cart/', cart, {
+            headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        })
+          .then(response => {
+            console.log('Cart sent successfully:', response.data);
+            // Handle success if needed
+          })
+          .catch(error => {
+            console.error('Error sending cart:', error);
+            // Handle error if needed
+          });
+      };
     return (
         <div >
             <h1>Category: {categoryId}</h1>
@@ -59,7 +75,8 @@ const Products = () => {
                     </div>
                 ))}
             </div>
-            <Pay></Pay>
+            <button onClick={sendCartToDjango}>Send Cart to Django</button>
+            {/* <Pay></Pay> */}
         </div>
     );
 }

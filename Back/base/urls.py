@@ -10,4 +10,7 @@ urlpatterns = [
     path('products',views.ProductListCreateView.as_view() ),
     path('products/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
     path('categories/<int:pk>/products/', views.CategoryProductListView.as_view()),
+    path('cart/', views.checkOut),
+    path('register/', views.register),
+    
 ]

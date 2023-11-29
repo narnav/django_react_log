@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { BrowserRouter, Route ,Routes} from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Products from './Products';
 import Cats from './Cats';
 
@@ -11,8 +11,8 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />}>
-                    <Route index element={<h1>please select category</h1>}></Route>
-                    <Route path="categories" element={<Cats />} >
+                    <Route path="/categories" element={<Cats />} >
+                        <Route index element={<h1>please select category</h1>}></Route>
                         <Route path=":categoryId" element={<Products />} />
                         {/* <Route path="/categories/products" element={<Products />} /> */}
                     </Route>

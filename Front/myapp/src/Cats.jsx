@@ -5,8 +5,9 @@ const Cats = () => {
     <div>
         Cats
         {/* {getStudents().map(cat => <div><Link to={'/categories/products'}>{cat.name}</Link><br/></div>)} */}
-        <Link to={'/categories/2'}>Bakery</Link>
-        <Link to={'/categories/1'}>Dairy</Link>
+        {/* <Link to={'/categories/2'}>Bakery</Link>|{" "}
+        <Link to={'/categories/1'}>Dairy</Link>|{" "}
+        <Link to={'/categories/products'}>test</Link> */}
         {/* {`/invoices/${invoice.number}`} */}
         <hr/>
         <Outlet></Outlet>

@@ -1,3 +1,4 @@
+import { Link, Outlet } from 'react-router-dom';
 import Cats from './Cats';
 import Login from './Login';    
 import { useState } from 'react';
@@ -11,7 +12,10 @@ function App() {
 
             {logged ? `Welcome ${userEmail}` :"not logged"}
             <Login  logged={setlogged} setEmail={setEmail}/>
-            <Cats></Cats>
+            <Link to={'/categories/2'}>Bakery</Link>|{" "}
+            <Link to={'/categories/1'}>Dairy</Link>|{" "}
+            <Link to={'/categories/products'}>test</Link>
+            <Outlet></Outlet>
         </div>
     );
 }
